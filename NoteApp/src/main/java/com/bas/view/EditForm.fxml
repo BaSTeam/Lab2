@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bas.view.EditFormController">
-   <children>
-      <Button layoutX="535.0" layoutY="350.0" mnemonicParsing="false" onAction="#editButtonClick" text="Изменить" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="15.0" />
-      <TextArea layoutX="15.0" layoutY="130.0" prefHeight="200.0" prefWidth="570.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <TextField layoutX="15.0" layoutY="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <Text layoutX="15.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="22.0" />
-      <Text layoutX="15.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Содержание" AnchorPane.leftAnchor="15.0" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bas.view.EditFormController">
+   <Button  layoutX="535.0" layoutY="350.0" mnemonicParsing="false" onAction="#editButtonClick"
+           text="Изменить" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="15.0"/>
+   <TextArea fx:id="contentArea" layoutX="15.0" layoutY="130.0" prefHeight="200.0" prefWidth="570.0"
+             AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
+   <TextField fx:id="titleField" layoutX="15.0" layoutY="50.0" AnchorPane.leftAnchor="15.0"
+              AnchorPane.topAnchor="50.0"/>
+   <Text layoutX="15.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название"
+         AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="22.0"/>
+   <Text layoutX="15.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Содержание"
+         AnchorPane.leftAnchor="15.0"/>
 </AnchorPane>

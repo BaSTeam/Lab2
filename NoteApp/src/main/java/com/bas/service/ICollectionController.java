@@ -1,9 +1,14 @@
 package com.bas.service;
 
+import com.bas.model.INote;
 import com.bas.model.Note;
+import javafx.collections.ObservableList;
+
+import java.util.List;
 
 public interface ICollectionController {
-    boolean Add(Note note);
-    boolean Delete(Note note);
-    boolean Replace(Note oldNote, Note newNote);
+    boolean add(INote note);
+    boolean delete(INote note);
+    boolean replace(INote oldNote, Note newNote);
+   List<INote> getListOfObjects();
 }

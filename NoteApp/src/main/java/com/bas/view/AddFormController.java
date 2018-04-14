@@ -1,24 +1,39 @@
 package com.bas.view;
 
+import com.bas.model.INote;
 import com.bas.service.ICollectionController;
+import com.bas.serviceImpl.ObjectFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 public class AddFormController {
-    Stage stage ;
-    ICollectionController collectionController;
-    MainFormController mainFormController;
+    static final int MINIMAL_TITLE_LENGTH = 3;
+    private Stage addFormStage;
+    private ICollectionController collectionController;
+    private MainFormController mainFormController;
+    @FXML
+    TextArea contentArea;
+    @FXML
+    TextField titleField;
 
-    AddFormController(ICollectionController controller, MainFormController outerMainFormController) {
+    public AddFormController(ICollectionController controller, Stage stage, MainFormController mainFormController) {
         collectionController = controller;
-        mainFormController = outerMainFormController;
+        this.addFormStage = stage;
+        this.mainFormController = mainFormController;
     }
 
-    public AddFormController() {
-    }
 
     @FXML
     void addButtonClick() {
-        stage.close();
+        INote note = ObjectFactory.createNote(titleField.getText(),contentArea.getText());
+        mainFormController.addNoteToList(note);
+        collectionController.add(note);
+        Engine.getEngine().addFinished();
+        titleField.setText("");
+        contentArea.setText("");
     }
+
 }

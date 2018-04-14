@@ -3,15 +3,15 @@ package com.bas.serviceImpl;
 import com.bas.model.INote;
 import com.bas.model.Note;
 import com.bas.service.ICollectionController;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class CollectionController implements ICollectionController {
-    LinkedList<INote> notes = new LinkedList<>();
-
+    private LinkedList<INote> notes = new LinkedList<>();
     @Override
-    public boolean Add(Note note) {
+    public boolean add(INote note) {
         try {
             notes.add(note);
             return true;
@@ -22,7 +22,7 @@ public class CollectionController implements ICollectionController {
     }
 
     @Override
-    public boolean Delete(Note note) {
+    public boolean delete(INote note) {
         try {
             notes.remove(note);
             return true;
@@ -33,7 +33,15 @@ public class CollectionController implements ICollectionController {
     }
 
     @Override
-    public boolean Replace(Note oldNote, Note newNote) {
+    public boolean replace(INote oldNote, Note newNote) {
+        notes.remove(oldNote);
+        notes.add(newNote);
         return false;
     }
+
+    @Override
+    public List<INote> getListOfObjects() {
+        return notes;
+    }
+
 }
