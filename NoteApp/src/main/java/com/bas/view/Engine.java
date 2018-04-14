@@ -2,7 +2,6 @@ package com.bas.view;
 
 import com.bas.model.INote;
 import com.bas.service.ICollectionController;
-import com.bas.serviceImpl.CollectionController;
 import com.bas.serviceImpl.ObjectFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
