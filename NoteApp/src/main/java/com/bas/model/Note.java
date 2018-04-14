@@ -1,6 +1,10 @@
 package com.bas.model;
 
-public class Note implements INote {
+import sun.plugin2.message.Serializer;
+
+import java.io.Serializable;
+
+public class Note implements INote ,Serializable {
     private String title;
     private String content;
 

@@ -22,7 +22,7 @@ public class MainFormController {
     @FXML
     ListView<INote> noteListView;
 
-    public MainFormController(ICollectionController controller, Stage stage) {
+    MainFormController(ICollectionController controller, Stage stage) {
         collectionController = controller;
         this.mainFormStage = stage;
     }
@@ -62,8 +62,8 @@ public class MainFormController {
             Engine.getEngine().editButtonClicked(noteToEdit);
         }
     }
-    void editNote(INote oldNote, INote newNote)
-    {
+
+    void editNote(INote oldNote, INote newNote) {
         noteListView.getItems().remove(oldNote);
         noteListView.getItems().add(newNote);
         clearNoteInfo();
@@ -72,5 +72,10 @@ public class MainFormController {
     private void clearNoteInfo() {
         titleField.setText("");
         contentField.setText("");
+    }
+
+    public void setNotes(List<INote> notes) {
+        collectionController.setListOfObjects(notes);
+        noteListView.getItems().setAll(notes);
     }
 }

@@ -2,6 +2,8 @@ package com.bas.view;
 
 import com.bas.model.INote;
 import com.bas.service.ICollectionController;
+import com.bas.service.ISerializer;
+import com.bas.serviceImpl.CollectionController;
 import com.bas.serviceImpl.ObjectFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -34,13 +36,13 @@ public class Engine extends Application {
     public void start(Stage primaryStage) {
         this.mainFormStage = primaryStage;
         engine = this;
-        initCollectionController();
+        initComponents();
         initEventHandlers();
         initPanes();
         mainFormStage.show();
     }
 
-    private void initCollectionController() {
+    private void initComponents() {
         collectionController = ObjectFactory.createCollectionController(ObjectFactory.createSerializer());
     }
 
@@ -54,6 +56,7 @@ public class Engine extends Application {
             Scene scene = new Scene(mainPane);
             mainFormStage.setScene(scene);
             mainFormController = loader1.getController();
+            loadNotesFromFile();
             FXMLLoader loader2 = new FXMLLoader(Engine.class.getResource("AddForm.fxml"));
             loader2.setControllerFactory(c-> new AddFormController(collectionController,addFormStage,loader1.getController()));
             AnchorPane addPane = loader2.load();
@@ -76,10 +79,16 @@ public class Engine extends Application {
         }
     }
 
+    private void loadNotesFromFile() {
+        collectionController.setListOfObjects(collectionController.getSerializer().get());
+        mainFormController.setNotes(collectionController.getSerializer().get());
+    }
+
     private void initEventHandlers() {
         addFormStage.setOnCloseRequest(we -> mainFormStage.show());
         editFormStage.setOnCloseRequest(we -> mainFormStage.show());
         editFormStage.setOnCloseRequest(we -> mainFormStage.show());
+        mainFormStage.setOnCloseRequest(we -> collectionController.getSerializer().save(collectionController.getListOfObjects()));
     }
     public void addButtonClicked()
     {

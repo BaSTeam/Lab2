@@ -15,22 +15,10 @@ import javafx.stage.Stage;
     }
 
     public  static ICollectionController createCollectionController(ISerializer serializer) {
-        return new CollectionController();
+        return new CollectionController(serializer);
     }
 
     public static INote createNote(String title, String body) {
         return new Note(title, body);
-    }
-
-    public static MainFormController createMainFormController( CollectionController cC, Stage stage) {
-        return new MainFormController(cC,stage);
-    }
-
-    public  static AddFormController createAddFormController(CollectionController controller, Stage stage,MainFormController mfc) {
-        return new AddFormController(controller,stage,mfc);
-    }
-
-    public static EditFormController CreateEditFormController(CollectionController controller, Stage stage,MainFormController mfc) {
-        return new EditFormController(controller,stage,mfc);
     }
 }

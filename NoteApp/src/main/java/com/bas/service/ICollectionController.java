@@ -11,4 +11,6 @@ public interface ICollectionController {
     boolean delete(INote note);
     boolean replace(INote oldNote, Note newNote);
    List<INote> getListOfObjects();
+   ISerializer getSerializer();
+   void setListOfObjects(List<INote> notes);
 }
