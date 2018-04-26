@@ -7,6 +7,7 @@ import com.bas.serviceImpl.CollectionController;
 import com.bas.serviceImpl.ObjectFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -19,7 +20,6 @@ public class Engine extends Application {
     private Stage addFormStage = new Stage();
     private Stage editFormStage = new Stage();
     private MainFormController mainFormController;
-    private AddFormController addFormController;
     private EditFormController editFormController;
 
     public static Engine getEngine() {
@@ -52,14 +52,14 @@ public class Engine extends Application {
             mainFormStage.setTitle("NotePad");
             FXMLLoader loader1 = new FXMLLoader(Engine.class.getResource("MainForm.fxml"));
             loader1.setControllerFactory(c-> new MainFormController(collectionController,mainFormStage));
-            AnchorPane mainPane = loader1.load();
+            Parent mainPane = loader1.load();
             Scene scene = new Scene(mainPane);
             mainFormStage.setScene(scene);
             mainFormController = loader1.getController();
             loadNotesFromFile();
             FXMLLoader loader2 = new FXMLLoader(Engine.class.getResource("AddForm.fxml"));
             loader2.setControllerFactory(c-> new AddFormController(collectionController,addFormStage,loader1.getController()));
-            AnchorPane addPane = loader2.load();
+            Parent addPane = loader2.load();
             scene = new Scene(addPane);
             addFormStage = new Stage();
             addFormStage.setScene(scene);
@@ -67,7 +67,7 @@ public class Engine extends Application {
             addFormStage.setTitle("NotePad add");
             FXMLLoader loader3 = new FXMLLoader(Engine.class.getResource("EditForm.fxml"));
             loader3.setControllerFactory(c-> new EditFormController (collectionController,editFormStage,loader1.getController()));
-            AnchorPane editPane = loader3.load();
+            Parent editPane = loader3.load();
             editFormController = loader3.getController();
             scene = new Scene(editPane);
             editFormStage = new Stage();
