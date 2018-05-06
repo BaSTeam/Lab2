@@ -52,6 +52,7 @@ public class MainFormController {
             collectionController.delete(noteToDelete);
             noteListView.getItems().remove(noteToDelete);
             clearNoteInfo();
+            Engine.getEngine().saveChanges();
         }
     }
 

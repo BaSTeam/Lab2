@@ -2,14 +2,11 @@ package com.bas.view;
 
 import com.bas.model.INote;
 import com.bas.service.ICollectionController;
-import com.bas.service.ISerializer;
-import com.bas.serviceImpl.CollectionController;
 import com.bas.serviceImpl.ObjectFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,7 +28,10 @@ public class Engine extends Application {
     public static void main(String[] args) {
         Application.launch(Engine.class);
     }
-
+    public void saveChanges ()
+    {
+        collectionController.getSerializer().save(collectionController.getListOfObjects());
+    }
     @Override
     public void start(Stage primaryStage) {
         this.mainFormStage = primaryStage;
@@ -58,7 +58,7 @@ public class Engine extends Application {
             mainFormController = loader1.getController();
             loadNotesFromFile();
             FXMLLoader loader2 = new FXMLLoader(Engine.class.getResource("AddForm.fxml"));
-            loader2.setControllerFactory(c-> new AddFormController(collectionController,addFormStage,loader1.getController()));
+            loader2.setControllerFactory(c-> new AddFormController(collectionController,loader1.getController()));
             Parent addPane = loader2.load();
             scene = new Scene(addPane);
             addFormStage = new Stage();
@@ -88,7 +88,6 @@ public class Engine extends Application {
         addFormStage.setOnCloseRequest(we -> mainFormStage.show());
         editFormStage.setOnCloseRequest(we -> mainFormStage.show());
         editFormStage.setOnCloseRequest(we -> mainFormStage.show());
-        mainFormStage.setOnCloseRequest(we -> collectionController.getSerializer().save(collectionController.getListOfObjects()));
     }
     public void addButtonClicked()
     {
