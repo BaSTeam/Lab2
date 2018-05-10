@@ -37,8 +37,8 @@ public class Engine extends Application {
         this.mainFormStage = primaryStage;
         engine = this;
         initComponents();
-        initEventHandlers();
         initPanes();
+        initEventHandlers();
         mainFormStage.show();
     }
 

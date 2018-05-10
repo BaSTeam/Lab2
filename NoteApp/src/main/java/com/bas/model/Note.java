@@ -1,7 +1,5 @@
 package com.bas.model;
 
-import sun.plugin2.message.Serializer;
-
 import java.io.Serializable;
 
 public class Note implements INote ,Serializable {
@@ -17,7 +15,6 @@ public class Note implements INote ,Serializable {
     public String getTitle() {
         return title;
     }
-
     @Override
     public String getContent() {
         return content;

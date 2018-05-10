@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EditFormController {
-    private Stage stage;
+    private Stage editFormStage;
     private MainFormController mainFormController;
     private ICollectionController collectionController;
     private Note oldNote;
@@ -53,7 +53,7 @@ public class EditFormController {
     }
 
      EditFormController(ICollectionController collectionController, Stage stage, MainFormController mainFormController) {
-        this.stage = stage;
+        this.editFormStage = stage;
         this.mainFormController = mainFormController;
         this.collectionController = collectionController;
     }
